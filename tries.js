@@ -1,32 +1,50 @@
 function Node(data) {
     this.data = data;
     this.isEndOfWord = false;
-    this.children = new Array(26).fill(null);
+    this.children = {};
 }
 
 function Trie() {
     this.root = new Node();
+}
 
-    insert = (string) => {
+Trie.prototype.insert = function(word) {
 
+    let node = this.root;
 
-
+    for (char of word) {
+        if (node[char] == null) node[char] = {};
+        node = node[char];
     }
 
-    search = (string) => {
+    node.isEndOfWord = true;
+}
 
+Trie.prototype.search = function(word) {
 
+    let node = this.root;
 
+    for (char of word) {
+        node = node[char];
+        if (node === null) return null;
     }
 
-    remove = (string) => {
+    return node !== null && node.isEndOfWord === true;
 
-        
+}
 
-    }
+Trie.prototype.remove = function(word) {
+
+    
+
 }
 
 
 
 t = new Trie();
-console.log(t.root.children)
+
+console.log(t.insert("test"));
+console.log(t.insert("toaster"));
+console.log(t.insert("taco"));
+console.log(t.search("test"));
+console.log(t.search("toast"));
