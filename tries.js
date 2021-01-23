@@ -40,5 +40,3 @@ console.log(t.insert("toaster"));
 console.log(t.insert("taco"));
 console.log(t.search("test"));
 console.log(t.search("toast"));
-console.log(t.remove("test"));
-console.log(t.search("test"));
